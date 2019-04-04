@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>News</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content >
+ <ion-item>
+    <ion-label floating>URL</ion-label>
+    <ion-input type="url" [(ngModel)]="url"></ion-input>
+  </ion-item>
+    <button ion-button block clear (click)="openWebpage(url)">Open Webpage</button>
+
+
+<ion-card *ngFor="let post of posts">
+  <img src="{{post.urlToImage}}"    (tap)="tapEvent($event)" />
+  <ion-card-content>
+    <ion-card-title class="card-title">
+      {{post.title}}
+      </ion-card-title>
+<!--     <p>
+      {{post.description}}
+    </p> -->
+  </ion-card-content>
+  <ion-item>
+  <p> {{ post.publishedAt | date : "dd/MM/yyyy hh:mma" : UTC}} </p>
+  <a href="{{post.url}}">More</a>
+  </ion-item>
+    
+    <ion-item>
+      Clicked: {{tap}} times
+	</ion-item>
+
+</ion-card>
+</ion-content>
+
